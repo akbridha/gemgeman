@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".AnimActivity">
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizonGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <Button
+        android:id="@+id/tombol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="350dp"
+        android:text="Tombol"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+    <Button
+        android:id="@+id/button_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="350dp"
+
+        android:layout_marginTop="348dp"
+        android:text="Tengah"
+
+        app:layout_constraintEnd_toStartOf="@+id/kiri"
+        app:layout_constraintStart_toEndOf="@+id/tombol"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+
+    <Button
+        android:id="@+id/kiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="350dp"
+        android:layout_marginTop="348dp"
+        android:text="Animasi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <ImageButton
+        android:id="@+id/satu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+
+        android:background="@drawable/greenbox"
+
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintEnd_toStartOf="@id/dua"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+    <ImageButton
+        android:id="@+id/dua"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bluebox"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/satu"
+        app:layout_constraintEnd_toStartOf="@id/tiga"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+    <ImageButton
+        android:id="@+id/tiga"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bluebox"
+        android:alpha="0.5"
+        android:text="Animasi"
+        app:layout_constraintStart_toEndOf="@id/dua"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintTop_toTopOf="@id/horizonGuideline" />
+
+    <ImageView
+        android:id="@+id/harfu_ba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ba" />
+</androidx.constraintlayout.widget.ConstraintLayout>
