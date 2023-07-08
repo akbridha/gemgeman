@@ -5,10 +5,12 @@ import android.media.MediaPlayer
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
@@ -19,6 +21,11 @@ class AnimActivity : AppCompatActivity() {
     private lateinit var binding :  ActivityAnimBinding
     private val booleanJawabanStatus = booleanArrayOf(false, false, false, false)
     private var mediaPlayer: MediaPlayer? = null
+
+    private lateinit var countdownTimer: CountDownTimer
+    private lateinit var progressBar: ProgressBar
+    private val totalTimeInMillis: Long = 60000 // Total waktu dalam milidetik (60 detik)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,6 +39,27 @@ class AnimActivity : AppCompatActivity() {
         binding.imageViewCenter.visibility = View.INVISIBLE
 
         Toast.makeText(this@AnimActivity, "Apa Bahasa Arab benda yang dipegang anak tersebut..? ", Toast.LENGTH_LONG).show()
+
+        progressBar = binding.progressBar
+        progressBar.max = totalTimeInMillis.toInt() // Mengatur nilai maksimum progress bar
+
+        countdownTimer = object : CountDownTimer(totalTimeInMillis, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val seconds = millisUntilFinished / 1000
+                progressBar.progress = millisUntilFinished.toInt() // Mengatur nilai progress bar
+                val timeString = formatTime(seconds)
+                binding.textviewTimer.text = "Waktu : $timeString"
+            }
+
+            override fun onFinish() {
+                progressBar.progress = 0
+
+            }
+        }
+
+        countdownTimer.start()
+
 
         binding.harfuAlif.setOnClickListener {
             // Ambil posisi X dan Y saat ini dari ImageView
@@ -107,6 +135,16 @@ class AnimActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        countdownTimer.cancel()
+    }
+
+    private fun formatTime(seconds: Long): String {
+        val minutes = seconds / 60
+        val secondsRemaining = seconds % 60
+        return String.format("%02d:%02d", minutes, secondsRemaining)
+    }
     private fun Animate(view: View, startX: Int, startY: Int, endX: Int, endY: Int) {
         // Buat animasi TranslateAnimation dari posisi saat ini ke posisi tujuan
         val animation = TranslateAnimation(0f, (endX - startX).toFloat(), 0f, (endY - startY).toFloat())

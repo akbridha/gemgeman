@@ -285,6 +285,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="140dp"
         android:layout_height="10dp"
+        android:background="@drawable/greenbox"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -293,7 +294,10 @@
 
     <TextView
         android:id="@+id/textview_timer"
-        android:layout_width="30dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:paddingHorizontal="5dp"
+        android:background="@drawable/bluebox"
         android:layout_height="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginHorizontal="10dp"
