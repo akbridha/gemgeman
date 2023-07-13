@@ -46,14 +46,11 @@
         android:background="@drawable/bluebox"
         app:layout_constraintEnd_toStartOf="@id/container_pilihan_dua"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/second_guideline" >
+        app:layout_constraintTop_toTopOf="@id/second_guideline"
+        android:orientation="horizontal" />
 
-        <ImageView
-            android:id="@+id/pilihan_satu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/dua_a" />
-    </LinearLayout>
+
+
 
     <LinearLayout
         android:id="@+id/container_pilihan_dua"
@@ -65,14 +62,7 @@
         app:layout_constraintStart_toEndOf="@id/container_pilihan_satu"
         app:layout_constraintEnd_toStartOf="@id/container_pilihan_tiga"
         app:layout_constraintTop_toTopOf="@id/second_guideline"
-        android:orientation="horizontal" >
-        <ImageView
-            android:id="@+id/pilihan_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/dua_b" />
-    </LinearLayout>
-
+        android:orientation="horizontal" />
 
     <LinearLayout
         android:id="@+id/container_pilihan_tiga"
@@ -84,17 +74,7 @@
         app:layout_constraintStart_toEndOf="@id/container_pilihan_dua"
         app:layout_constraintEnd_toStartOf="@id/container_pilihan_empat"
         app:layout_constraintTop_toTopOf="@id/second_guideline"
-        android:orientation="horizontal" >
-        <ImageView
-            android:id="@+id/pilihan_c"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-
-            app:srcCompat="@drawable/dua_c" />
-
-
-    </LinearLayout>
+        android:orientation="horizontal" />
 
     <LinearLayout
         android:id="@+id/container_pilihan_empat"
@@ -106,15 +86,8 @@
         android:text="Animasi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/container_pilihan_tiga"
-        app:layout_constraintTop_toTopOf="@id/second_guideline" >
-
-        <ImageView
-            android:id="@+id/pilihan_d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/dua_d" />
-    </LinearLayout>
-
+        app:layout_constraintTop_toTopOf="@id/second_guideline"
+        android:orientation="horizontal" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/answer_guideline"
@@ -178,30 +151,30 @@
         app:layout_constraintGuide_percent="0.8" />
 
     <ImageButton
-        android:id="@+id/satu"
+        android:id="@+id/jawaban_satu"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/greenbox"
-        app:layout_constraintEnd_toStartOf="@id/dua"
+        app:layout_constraintEnd_toStartOf="@id/jawaban_dua"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
         app:layout_constraintTop_toTopOf="@id/answer_guideline" />
 
     <ImageButton
-        android:id="@+id/dua"
+        android:id="@+id/jawaban_dua"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/greenbox"
         android:text="Button"
-        app:layout_constraintStart_toEndOf="@id/satu"
-        app:layout_constraintEnd_toStartOf="@id/tiga"
+        app:layout_constraintStart_toEndOf="@id/jawaban_satu"
+        app:layout_constraintEnd_toStartOf="@id/jawaban_tiga"
         app:layout_constraintTop_toTopOf="@id/answer_guideline" />
 
     <ImageButton
-        android:id="@+id/tiga"
+        android:id="@+id/jawaban_tiga"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -209,24 +182,42 @@
         android:background="@drawable/greenbox"
 
         android:text="Animasi"
-        app:layout_constraintStart_toEndOf="@id/dua"
-        app:layout_constraintEnd_toStartOf="@id/empat"
-        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
-
-    <ImageButton
-        android:id="@+id/empat"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/greenbox"
-        android:text="Animasi"
-        app:layout_constraintStart_toEndOf="@id/tiga"
+        app:layout_constraintStart_toEndOf="@id/jawaban_dua"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintTop_toTopOf="@id/answer_guideline" />
 
 
 
+    <ImageView
+        android:id="@+id/pilihan_satu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@+id/container_pilihan_satu"
+        app:layout_constraintTop_toTopOf="@+id/container_pilihan_satu"
+        android:src="@drawable/dua_a" />
+    <ImageView
+        android:id="@+id/pilihan_dua"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@+id/container_pilihan_dua"
+        app:layout_constraintTop_toTopOf="@+id/container_pilihan_dua"
+        android:src="@drawable/dua_b" />
+
+    <ImageView
+        android:id="@+id/pilihan_tiga"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@+id/container_pilihan_tiga"
+        app:layout_constraintTop_toTopOf="@+id/container_pilihan_tiga"
+        android:src="@drawable/dua_c" />
+
+    <ImageView
+        android:id="@+id/pilihan_empat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@+id/container_pilihan_empat"
+        app:layout_constraintTop_toTopOf="@+id/container_pilihan_empat"
+        android:src="@drawable/dua_d" />
 
 
 

@@ -1,5 +1,6 @@
 package com.example.rotah
 
+import TimerManager
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Intent
@@ -16,9 +17,11 @@ import com.example.rotah.databinding.ActivityLevelDuaBinding
 class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
 
     private lateinit var binding: ActivityLevelDuaBinding
-    private var booleanJawabanStatus = booleanArrayOf(false, false, false, false)
+    private var booleanJawabanStatus = booleanArrayOf(false, false, false)
     private var mediaPlayer: MediaPlayer? = null
     private var timeString = ""
+    private var totalTimeInMillis: Long = 30000
+    private val firstRun : Boolean = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,56 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
         binding.btnLanjut.visibility = View.INVISIBLE
 
 
+        binding.pilihanSatu.setOnClickListener {
+
+            Toast.makeText(this@LevelDua,"Salah", Toast.LENGTH_SHORT).show()
+        }
+        binding.pilihanDua.setOnClickListener {
+
+            val startX = binding.containerPilihanDua.left
+            val startY = binding.containerPilihanDua.top
+
+            val endX = binding.jawabanDua.left
+            val endY = binding.jawabanDua.top
+            val animator = createTranslationAnimator(binding.pilihanDua, startX, startY, endX, endY)
+            animator.start()
+            booleanJawabanStatus[0] = true
+            cekStatusSemuaJawaban()
+        }
+        binding.pilihanTiga.setOnClickListener {
+
+            val startX = binding.containerPilihanTiga.left
+            val startY = binding.containerPilihanTiga.top
+
+            val endX = binding.jawabanSatu.left
+            val endY = binding.jawabanSatu.top
+            val animator = createTranslationAnimator(binding.pilihanTiga, startX, startY, endX, endY)
+            animator.start()
+            booleanJawabanStatus[1] = true
+            cekStatusSemuaJawaban()
+        }
+        binding.pilihanEmpat.setOnClickListener {
+
+            val startX = binding.containerPilihanEmpat.left
+            val startY = binding.containerPilihanEmpat.top
+
+            val endX = binding.jawabanTiga.left
+            val endY = binding.jawabanTiga.top
+            val animator = createTranslationAnimator(binding.pilihanEmpat, startX, startY, endX, endY)
+            animator.start()
+            booleanJawabanStatus[2] = true
+            cekStatusSemuaJawaban()
+        }
+
+
+        binding.progressBar.max = totalTimeInMillis.toInt()
+        TimerManager.registerCallback(this)
+
+        if (firstRun){
+            val intent = getIntent()
+            totalTimeInMillis = intent.getLongExtra("waktu", 0)
+            TimerManager.startTimer(totalTimeInMillis)
+        }
 
     }
 
@@ -75,7 +128,12 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
         TimerManager.stopTimer()
 
     }
+    override fun onResume() {
+        super.onResume()
+        Log.d("LevelDuaActivity","masuk onResume")
 
+
+    }
 
     private fun createTranslationAnimator(
         view: View,
@@ -99,6 +157,7 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
         val allTrue = booleanJawabanStatus.all { it }
         if (allTrue){
 
+            TimerManager.stopTimer()
             mediaPlayer?.start()
             Toast.makeText(this@LevelDua, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
             binding.imageViewGif.visibility = View.VISIBLE

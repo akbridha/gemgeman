@@ -23,8 +23,8 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
     private var timeString = ""
 
     private lateinit var countdownTimer: CountDownTimer
-    private lateinit var progressBar: ProgressBar
-    private val totalTimeInMillis: Long = 30000 // Total waktu dalam milidetik (60 detik)
+    private val firstRun : Boolean = true
+    private var totalTimeInMillis: Long = 30000 // Total waktu dalam milidetik (60 detik)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,13 +113,17 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         }
         binding.progressBar.max = totalTimeInMillis.toInt()
         TimerManager.registerCallback(this)
+
+        if (firstRun){
+            TimerManager.startTimer(totalTimeInMillis)
+        }
     }
 
 
 
     private fun pindahHalaman(tujuan : Class<*>) {
         val intent = Intent(this@AnimActivity, tujuan)
-        intent.putExtra("waktu", timeString)
+        intent.putExtra("waktu", totalTimeInMillis)
 
         startActivity(intent)
     }
@@ -130,7 +134,7 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         }
         val allTrue = booleanJawabanStatus.all { it }
         if (allTrue){
-
+            TimerManager.stopTimer()
             mediaPlayer?.start()
             Toast.makeText(this@AnimActivity, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
             binding.imageViewGif.visibility = View.VISIBLE
@@ -198,12 +202,13 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         super.onResume()
         Log.d("animActivity","masuk onResume")
 
-        TimerManager.startTimer(totalTimeInMillis)
+
     }
     override fun onTimerTick(millisUntilFinished : Long) {
        runOnUiThread {
 
 
+          totalTimeInMillis =  millisUntilFinished
            val seconds = millisUntilFinished / 1000
            val waktuString = formatTime(seconds)
            binding.textviewTimer.text = "Waktu: $waktuString"
