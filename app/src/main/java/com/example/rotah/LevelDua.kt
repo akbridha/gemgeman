@@ -81,6 +81,7 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
         if (firstRun){
             val intent = getIntent()
             totalTimeInMillis = intent.getLongExtra("waktu", 0)
+            Log.d("LevelDuaAct ", "Hasil waktu dari intent $totalTimeInMillis")
             TimerManager.startTimer(totalTimeInMillis)
             firstRun = false
         }

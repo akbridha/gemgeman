@@ -74,6 +74,7 @@ class LevelTiga : AppCompatActivity()  , TimerManager.TimerCallback {
         TimerManager.registerCallback(this)
         if (firstRun){
             val intent = getIntent()
+            Log.d("LevelTigaAct ", "Hasil waktu dari intent $totalTimeInMillis")
             totalTimeInMillis = intent.getLongExtra("waktu", 0)
             TimerManager.startTimer(totalTimeInMillis)
         }

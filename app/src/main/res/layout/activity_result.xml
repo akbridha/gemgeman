@@ -9,17 +9,27 @@
 
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/imageViewGif"
+        android:id="@+id/image_lose"
         android:layout_width="220dp"
         android:layout_height="180dp"
-
         android:layout_marginTop="104dp"
-
         android:layout_marginBottom="117dp"
-
         android:background="@drawable/bluebox"
         android:src="@drawable/timeup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/image_success"
+        android:layout_width="220dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginBottom="117dp"
+        android:background="@drawable/bluebox"
+        android:src="@drawable/congrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,13 +39,16 @@
         android:id="@+id/textView_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+
+        android:background="@drawable/greybox"
         android:text="TextView"
-        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewGif" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
