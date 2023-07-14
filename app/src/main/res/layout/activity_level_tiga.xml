@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".LevelTiga">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <ImageView
+        android:id="@+id/image_question"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="25dp"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
+        app:layout_constraintBottom_toTopOf="@id/second_guideline"
+        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        android:background="@drawable/greybox"
+        android:src="@drawable/boy_stand" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/second_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="219dp" />
+
+    <ImageButton
+        android:id="@+id/container_pilihan_satu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="1dp"
+        android:alpha="0.5"
+        android:background="@drawable/bluebox"
+        app:layout_constraintEnd_toStartOf="@id/pilihan_dua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+
+    <ImageButton
+        android:id="@+id/pilihan_dua"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="1dp"
+        android:background="@drawable/bluebox"
+        android:text="Button"
+
+        android:alpha="0.5"
+        app:layout_constraintStart_toEndOf="@id/container_pilihan_satu"
+        app:layout_constraintEnd_toStartOf="@id/pilihan_tiga"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+
+    <ImageButton
+        android:id="@+id/pilihan_tiga"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="1dp"
+        android:background="@drawable/bluebox"
+        android:alpha="0.5"
+        app:layout_constraintStart_toEndOf="@id/pilihan_dua"
+        app:layout_constraintEnd_toStartOf="@id/pilihan_empat"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+    <ImageButton
+        android:id="@+id/pilihan_empat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="1dp"
+        android:background="@drawable/bluebox"
+        android:alpha="0.5"
+        android:text="Animasi"
+        app:layout_constraintStart_toEndOf="@id/pilihan_tiga"
+        app:layout_constraintEnd_toStartOf="@id/pilihan_lima"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+    <ImageButton
+        android:id="@+id/pilihan_lima"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="1dp"
+        android:background="@drawable/bluebox"
+        android:alpha="0.5"
+        android:text="Animasi"
+        app:layout_constraintStart_toEndOf="@id/pilihan_empat"
+        app:layout_constraintEnd_toStartOf="@id/pilihan_enam"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+
+    <ImageButton
+        android:id="@+id/pilihan_enam"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="28dp"
+        android:alpha="0.5"
+        android:background="@drawable/bluebox"
+        android:text="Animasi"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toEndOf="@id/pilihan_lima"
+        app:layout_constraintTop_toTopOf="@id/second_guideline" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/answer_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="439dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+
+    <ImageView
+        android:id="@+id/imageView_center"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bluebox"
+        android:src="@drawable/shobiyyu"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_guideline" />
+
+
+    <Button
+        android:id="@+id/btn_lanjut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="6dp"
+        android:text="Lanjut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewGif" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <ImageButton
+        android:id="@+id/satu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/greenbox"
+        app:layout_constraintEnd_toStartOf="@id/dua"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
+
+    <ImageButton
+        android:id="@+id/dua"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/greenbox"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/satu"
+        app:layout_constraintEnd_toStartOf="@id/tiga"
+        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
+
+    <ImageButton
+        android:id="@+id/tiga"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/greenbox"
+
+        android:text="Animasi"
+        app:layout_constraintStart_toEndOf="@id/dua"
+        app:layout_constraintEnd_toStartOf="@id/empat"
+        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
+    <ImageButton
+        android:id="@+id/empat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/greenbox"
+
+        android:text="Animasi"
+        app:layout_constraintStart_toEndOf="@id/tiga"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
+
+    <ImageView
+        android:id="@+id/harfuShad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/container_pilihan_satu"
+        app:layout_constraintTop_toTopOf="@+id/container_pilihan_satu"
+        android:src="@drawable/shad" />
+    <ImageView
+        android:id="@+id/harfu_mim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pilihan_dua"
+        app:layout_constraintTop_toTopOf="@+id/pilihan_dua"
+        app:srcCompat="@drawable/mim" />
+    <ImageView
+        android:id="@+id/harfu_ba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@+id/pilihan_tiga"
+        app:layout_constraintTop_toTopOf="@+id/pilihan_tiga"
+        app:srcCompat="@drawable/ba" />
+    <ImageView
+        android:id="@+id/harfu_kaf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@+id/pilihan_empat"
+        app:layout_constraintTop_toTopOf="@+id/pilihan_empat"
+        app:srcCompat="@drawable/kaf" />
+    <ImageView
+        android:id="@+id/harfu_ya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toStartOf="@+id/pilihan_lima"
+        app:layout_constraintTop_toTopOf="@+id/pilihan_lima"
+        app:srcCompat="@drawable/ya" />
+    <ImageView
+        android:id="@+id/harfu_dza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@+id/pilihan_enam"
+        app:layout_constraintTop_toTopOf="@+id/pilihan_enam"
+        app:srcCompat="@drawable/dza" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/imageViewGif"
+        android:layout_width="250dp"
+        android:layout_height="130dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/second_guideline"
+        android:src="@drawable/download" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="140dp"
+        android:layout_height="10dp"
+        android:background="@drawable/greenbox"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+
+    <TextView
+        android:id="@+id/textview_timer"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:paddingHorizontal="5dp"
+        android:background="@drawable/bluebox"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

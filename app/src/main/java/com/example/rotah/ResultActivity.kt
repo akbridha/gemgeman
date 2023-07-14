@@ -12,7 +12,7 @@ import com.example.rotah.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
 
-    private var statusResult = ""
+    private var statusResult : Long = 0
 
 
 
@@ -26,10 +26,10 @@ class ResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
       val intent = getIntent()
-        statusResult = intent.getStringExtra("waktu").toString()
+        statusResult = intent.getLongExtra("waktu",0)
 
 
-        binding.textViewResult.setText(statusResult)
+        binding.textViewResult.setText((statusResult/1000).toString())
     }
 
 

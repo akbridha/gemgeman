@@ -1,133 +1,82 @@
 package com.example.rotah
 
-import TimerManager
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
-import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.rotah.databinding.ActivityAnimBinding
+import com.example.rotah.databinding.ActivityLevelTigaBinding
 
-class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
-    private lateinit var binding :  ActivityAnimBinding
-    private val booleanJawabanStatus = booleanArrayOf(false, false, false, false)
-    private var mediaPlayer: MediaPlayer? = null
-    private var timeString = ""
+class LevelTiga : AppCompatActivity()  , TimerManager.TimerCallback {
 
-    private lateinit var countdownTimer: CountDownTimer
+    private lateinit var binding: ActivityLevelTigaBinding
+    private var booleanJawabanStatus = booleanArrayOf(false, false, false)
     private var firstRun : Boolean = true
-    private var totalTimeInMillis: Long = 30000 // Total waktu dalam milidetik (60 detik)
-
-
+    private var mediaPlayer: MediaPlayer? = null
+    private var totalTimeInMillis: Long = 30000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityAnimBinding.inflate(layoutInflater)
+        binding = ActivityLevelTigaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        mediaPlayer = MediaPlayer.create(this, R.raw.congrat)
-
 
         binding.imageViewGif.visibility = View.INVISIBLE
         binding.imageViewCenter.visibility = View.INVISIBLE
         binding.btnLanjut.visibility = View.INVISIBLE
 
-        Toast.makeText(this@AnimActivity, "Apa Bahasa Arab benda di atas ", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@LevelTiga, "Apa Bahasa Arabnya gambar di atas ", Toast.LENGTH_LONG).show()
 
-
-
-
-        binding.harfuAlif.setOnClickListener {
-            // Ambil posisi X dan Y saat ini dari ImageView
-            val startX = binding.harfuAlif.left
-            val startY = binding.harfuAlif.top
-            // Ambil posisi X dan Y dari Button
-            val endX = binding.dua.left
-            val endY = binding.dua.top
-//            Animate(binding.harfuAlif, startX, startY, endX, endY)
-            val animator = createTranslationAnimator(binding.harfuAlif, startX, startY, endX, endY)
+        binding.harfuShad.setOnClickListener {
+            val startX = binding.harfuShad.left
+            val startY = binding.harfuShad.top
+            val endX = binding.tiga.left
+            val endY = binding.tiga.top
+            val animator = createTranslationAnimator(binding.harfuShad, startX, startY, endX, endY)
             animator.start()
             booleanJawabanStatus[0] = true
             cekStatusSemuaJawaban()
         }
-        binding.harfuTa.setOnClickListener {
-
-            val startX = binding.harfuTa.left
-            val startY = binding.harfuTa.top
-            val endX = binding.tiga.left
-            val endY = binding.tiga.top
-//            Animate(binding.harfuTa, startX, startY, endX, endY)
-
-            val animator = createTranslationAnimator(binding.harfuTa, startX, startY, endX, endY)
-            animator.start()
-            booleanJawabanStatus[1] = true
-            cekStatusSemuaJawaban()
-        }
-        binding.harfuTho.setOnClickListener {
-
-              Toast.makeText(this@AnimActivity, "Salah.. clue : pilihlah huruf untuk 'kitab'", Toast.LENGTH_SHORT).show()
-        }
-        binding.harfuKaf.setOnClickListener {
-            // Ambil posisi X dan Y saat ini dari ImageView
-            val startX = binding.harfuKaf.left
-            val startY = binding.harfuKaf.top
-            // Ambil posisi X dan Y dari Button
-            val endX = binding.empat.left
-            val endY = binding.empat.top
-//            Animate(binding.harfuKaf, startX, startY, endX, endY)
-            val animator = createTranslationAnimator(binding.harfuKaf, startX, startY, endX, endY)
-            animator.start()
-
-              booleanJawabanStatus[2] = true
-              cekStatusSemuaJawaban()
-
+        binding.harfuMim.setOnClickListener {
+            Toast.makeText(this@LevelTiga, "Salah.. ", Toast.LENGTH_SHORT).show()
         }
         binding.harfuBa.setOnClickListener {
             val startX = binding.harfuBa.left
             val startY = binding.harfuBa.top
-            val endX = binding.satu.left
-            val endY = binding.satu.top
-//            Animate(binding.harfuBa, startX, startY, endX, endY)
+            val endX = binding.dua.left
+            val endY = binding.dua.top
             val animator = createTranslationAnimator(binding.harfuBa, startX, startY, endX, endY)
             animator.start()
-              booleanJawabanStatus[3] = true
-              cekStatusSemuaJawaban()
-        }
-        binding.harfuQaf.setOnClickListener {
-
-
-
-              Toast.makeText(this@AnimActivity, "Salah.. ", Toast.LENGTH_SHORT).show()
-              Toast.makeText(this@AnimActivity, "clue : pilihlah huruf untuk 'kitab'", Toast.LENGTH_SHORT).show()
+            booleanJawabanStatus[1] = true
+            cekStatusSemuaJawaban()
+       }
+        binding.harfuKaf.setOnClickListener {
+            Toast.makeText(this@LevelTiga, "Salah.. ", Toast.LENGTH_SHORT).show()
+      }
+        binding.harfuYa.setOnClickListener {
+            val startX = binding.harfuYa.left
+            val startY = binding.harfuYa.top
+            val endX = binding.satu.left
+            val endY = binding.satu.top
+            val animator = createTranslationAnimator(binding.harfuYa, startX, startY, endX, endY)
+            animator.start()
+            booleanJawabanStatus[2] = true
+            cekStatusSemuaJawaban()
         }
         binding.btnLanjut.setOnClickListener {
-           pindahHalaman(LevelDua::class.java)
+            pindahHalaman(ResultActivity::class.java)
         }
         binding.progressBar.max = totalTimeInMillis.toInt()
         TimerManager.registerCallback(this)
-
         if (firstRun){
+            val intent = getIntent()
+            totalTimeInMillis = intent.getLongExtra("waktu", 0)
             TimerManager.startTimer(totalTimeInMillis)
-            firstRun = false
-
         }
-    }
-
-
-
-    private fun pindahHalaman(tujuan : Class<*>) {
-        val intent = Intent(this@AnimActivity, tujuan)
-        intent.putExtra("waktu", totalTimeInMillis)
-
-        startActivity(intent)
     }
 
     private fun cekStatusSemuaJawaban() {
@@ -138,12 +87,19 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         if (allTrue){
             TimerManager.stopTimer()
             mediaPlayer?.start()
-            Toast.makeText(this@AnimActivity, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@LevelTiga, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
             binding.imageViewGif.visibility = View.VISIBLE
             binding.imageViewCenter.visibility = View.VISIBLE
             binding.btnLanjut.visibility = View.VISIBLE
         }
+
     }
+    private fun pindahHalaman(tujuan : Class<*>) {
+            val intent = Intent(this@LevelTiga, tujuan)
+            intent.putExtra("waktu", totalTimeInMillis)
+
+            startActivity(intent)
+        }
     private fun formatTime(seconds: Long): String {
         val minutes = seconds / 60
         val secondsRemaining = seconds % 60
@@ -193,7 +149,7 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
     }
     override fun onPause() {
         super.onPause()
-   Log.d("animActivity","masuk onPause")
+        Log.d("animActivity","masuk onPause")
 
         //hentikan hitung mundur
         TimerManager.stopTimer()
@@ -203,13 +159,13 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         Log.d("animActivity","masuk onResume")
     }
     override fun onTimerTick(millisUntilFinished : Long) {
-       runOnUiThread {
-          totalTimeInMillis =  millisUntilFinished
-           val seconds = millisUntilFinished / 1000
-           val waktuString = formatTime(seconds)
-           binding.textviewTimer.text = "Waktu: $waktuString"
-           binding.progressBar.progress = millisUntilFinished.toInt()
-       }
+        runOnUiThread {
+            totalTimeInMillis =  millisUntilFinished
+            val seconds = millisUntilFinished / 1000
+            val waktuString = formatTime(seconds)
+            binding.textviewTimer.text = "Waktu: $waktuString"
+            binding.progressBar.progress = millisUntilFinished.toInt()
+        }
         Log.d("animActivity onTick",millisUntilFinished.toString())
     }
     override fun onTimerFinish() {

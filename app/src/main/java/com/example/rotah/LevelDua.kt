@@ -21,21 +21,18 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
     private var mediaPlayer: MediaPlayer? = null
     private var timeString = ""
     private var totalTimeInMillis: Long = 30000
-    private val firstRun : Boolean = true
-
+    private var firstRun : Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
-      binding = ActivityLevelDuaBinding.inflate(layoutInflater)
+        binding = ActivityLevelDuaBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         supportActionBar?.hide()
         mediaPlayer = MediaPlayer.create(this, R.raw.congrat)
 
-
         binding.imageViewGif.visibility = View.INVISIBLE
         binding.imageViewCenter.visibility = View.INVISIBLE
         binding.btnLanjut.visibility = View.INVISIBLE
-
 
         binding.pilihanSatu.setOnClickListener {
 
@@ -78,7 +75,6 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
             cekStatusSemuaJawaban()
         }
 
-
         binding.progressBar.max = totalTimeInMillis.toInt()
         TimerManager.registerCallback(this)
 
@@ -86,39 +82,33 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
             val intent = getIntent()
             totalTimeInMillis = intent.getLongExtra("waktu", 0)
             TimerManager.startTimer(totalTimeInMillis)
+            firstRun = false
         }
 
+        binding.btnLanjut.setOnClickListener {
+            pindahHalaman(LevelTiga::class.java)
+        }
     }
-
-
-
-
-
-
     override fun onTimerTick(millisUntilFinished : Long) {
         runOnUiThread {
-
-
+            totalTimeInMillis =  millisUntilFinished
             val seconds = millisUntilFinished / 1000
             val waktuString = formatTime(seconds)
             binding.textviewTimer.text = "Waktu: $waktuString"
-
             binding.progressBar.progress = millisUntilFinished.toInt()
         }
-        Log.d("animActivity onTick",millisUntilFinished.toString())
+        Log.d("LevelDua onTick",millisUntilFinished.toString())
     }
     override fun onTimerFinish() {
         binding.progressBar.progress = 0
         pindahHalaman(ResultActivity::class.java)
     }
-
     private fun pindahHalaman(tujuan : Class<*>) {
         val intent = Intent(this@LevelDua, tujuan)
-        intent.putExtra("waktu", timeString)
+        intent.putExtra("waktu", totalTimeInMillis)
 
         startActivity(intent)
     }
-
     override fun onPause() {
         super.onPause()
         Log.d("LevelDuaActivity","masuk onPause")
@@ -134,7 +124,6 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
 
 
     }
-
     private fun createTranslationAnimator(
         view: View,
         startX: Int,
@@ -148,8 +137,6 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
             duration = 1000 // Atur durasi animasi sesuai keinginan Anda
         }
     }
-
-
     private fun cekStatusSemuaJawaban() {
         for (i in booleanJawabanStatus.indices) {
             Log.d("TAG", "booleanArray[$i]: ${booleanJawabanStatus[i]}")
@@ -165,12 +152,9 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
             binding.btnLanjut.visibility = View.VISIBLE
         }
     }
-
-
     private fun formatTime(seconds: Long): String {
         val minutes = seconds / 60
         val secondsRemaining = seconds % 60
         return String.format("%02d:%02d", minutes, secondsRemaining)
     }
-
 }
