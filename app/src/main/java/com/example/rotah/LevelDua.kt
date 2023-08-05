@@ -7,9 +7,13 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import com.example.rotah.databinding.ActivityAnimBinding
 import com.example.rotah.databinding.ActivityLevelDuaBinding
@@ -147,10 +151,14 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
 
             TimerManager.stopTimer()
             mediaPlayer?.start()
-            Toast.makeText(this@LevelDua, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
+            Handler().postDelayed({
+            Toast.makeText(this@LevelDua, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT)
+                .show()
             binding.imageViewGif.visibility = View.VISIBLE
             binding.imageViewCenter.visibility = View.VISIBLE
             binding.btnLanjut.visibility = View.VISIBLE
+
+         }, 700)
         }
     }
     private fun formatTime(seconds: Long): String {

@@ -8,6 +8,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
@@ -138,10 +139,13 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         if (allTrue){
             TimerManager.stopTimer()
             mediaPlayer?.start()
+            Handler().postDelayed({
             Toast.makeText(this@AnimActivity, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
             binding.imageViewGif.visibility = View.VISIBLE
             binding.imageViewCenter.visibility = View.VISIBLE
             binding.btnLanjut.visibility = View.VISIBLE
+
+            }, 500)
         }
     }
     private fun formatTime(seconds: Long): String {

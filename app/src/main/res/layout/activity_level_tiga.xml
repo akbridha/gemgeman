@@ -201,20 +201,9 @@
 
         android:text="Animasi"
         app:layout_constraintStart_toEndOf="@id/dua"
-        app:layout_constraintEnd_toStartOf="@id/empat"
-        app:layout_constraintTop_toTopOf="@id/answer_guideline" />
-    <ImageButton
-        android:id="@+id/empat"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/greenbox"
-
-        android:text="Animasi"
-        app:layout_constraintStart_toEndOf="@id/tiga"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintTop_toTopOf="@id/answer_guideline" />
+
 
     <ImageView
         android:id="@+id/harfuShad"

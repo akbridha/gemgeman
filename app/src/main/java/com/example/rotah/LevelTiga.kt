@@ -6,6 +6,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
@@ -24,6 +25,8 @@ class LevelTiga : AppCompatActivity()  , TimerManager.TimerCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityLevelTigaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        mediaPlayer = MediaPlayer.create(this,R.raw.congrat)
 
         binding.imageViewGif.visibility = View.INVISIBLE
         binding.imageViewCenter.visibility = View.INVISIBLE
@@ -87,11 +90,15 @@ class LevelTiga : AppCompatActivity()  , TimerManager.TimerCallback {
         val allTrue = booleanJawabanStatus.all { it }
         if (allTrue){
             TimerManager.stopTimer()
-            mediaPlayer?.start()
             Toast.makeText(this@LevelTiga, "Selamat  jawaban Benar ", Toast.LENGTH_SHORT).show()
+
+            mediaPlayer?.start()
+            Handler().postDelayed({
+
             binding.imageViewGif.visibility = View.VISIBLE
             binding.imageViewCenter.visibility = View.VISIBLE
             binding.btnLanjut.visibility = View.VISIBLE
+            },500)
         }
 
     }
