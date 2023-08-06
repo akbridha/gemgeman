@@ -1,14 +1,38 @@
-package com.example.rotah;
+package com.example.rotah
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.rotah.databinding.ActivityBerandaBinding
 
-import android.os.Bundle;
+class BerandaActivity : AppCompatActivity() {
 
-public class BerandaActivity extends AppCompatActivity {
+    private lateinit var binding: ActivityBerandaBinding
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beranda);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityBerandaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportActionBar?.hide()
+        binding.button.setOnClickListener {
+            pindahHalaman(AnimActivity::class.java)
+        }
+
+
+
+    }
+
+    private fun pindahHalaman(tujuan : Class<*>) {
+
+
+        val animIn = R.anim.slide_in_right
+        val animOut = R.anim.slide_out_left
+
+        val arah = Intent(this, tujuan)
+
+        startActivity(arah)
+        finish()
+        overridePendingTransition(animIn, animOut)
     }
 }

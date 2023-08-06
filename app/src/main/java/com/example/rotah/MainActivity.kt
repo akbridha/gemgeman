@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
                 val animIn = R.anim.slide_in_up
                 val animOut = R.anim.slide_out_down
-                val arah = Intent(this, AnimActivity::class.java)
+                val arah = Intent(this, BerandaActivity::class.java)
                 startActivity(arah)
                 finish()
                 overridePendingTransition(animIn, animOut)

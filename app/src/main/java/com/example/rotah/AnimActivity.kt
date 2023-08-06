@@ -37,6 +37,7 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         mediaPlayer = MediaPlayer.create(this, R.raw.congrat)
 
 
+
         binding.imageViewGif.visibility = View.INVISIBLE
         binding.imageViewCenter.visibility = View.INVISIBLE
         binding.btnLanjut.visibility = View.INVISIBLE
@@ -135,9 +136,6 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
         startActivity(arah)
         finish()
         overridePendingTransition(animIn, animOut)
-
-
-
     }
 
     private fun cekStatusSemuaJawaban() {
