@@ -103,11 +103,17 @@ class LevelTiga : AppCompatActivity()  , TimerManager.TimerCallback {
 
     }
     private fun pindahHalaman(tujuan : Class<*>) {
-            val intent = Intent(this@LevelTiga, tujuan)
-            intent.putExtra("waktu", totalTimeInMillis)
+        val animIn = R.anim.slide_in_right
+        val animOut = R.anim.slide_out_left
 
-            startActivity(intent)
-        }
+        val arah = Intent(this, tujuan)
+        arah.putExtra("waktu", totalTimeInMillis)
+        startActivity(arah)
+        finish()
+        overridePendingTransition(animIn, animOut)
+
+
+    }
     private fun formatTime(seconds: Long): String {
         val minutes = seconds / 60
         val secondsRemaining = seconds % 60

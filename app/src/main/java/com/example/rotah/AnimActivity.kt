@@ -125,10 +125,19 @@ class AnimActivity : AppCompatActivity() , TimerManager.TimerCallback {
 
 
     private fun pindahHalaman(tujuan : Class<*>) {
-        val intent = Intent(this@AnimActivity, tujuan)
-        intent.putExtra("waktu", totalTimeInMillis)
 
-        startActivity(intent)
+
+        val animIn = R.anim.slide_in_right
+        val animOut = R.anim.slide_out_left
+
+        val arah = Intent(this, tujuan)
+        arah.putExtra("waktu", totalTimeInMillis)
+        startActivity(arah)
+        finish()
+        overridePendingTransition(animIn, animOut)
+
+
+
     }
 
     private fun cekStatusSemuaJawaban() {

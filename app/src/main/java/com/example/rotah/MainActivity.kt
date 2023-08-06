@@ -46,11 +46,44 @@ class MainActivity : AppCompatActivity() {
 
             // Mengatur penundaan dan memulai Activity baru setelah 3 detik
             Handler().postDelayed({
-                val intent = Intent(this, AnimActivity::class.java)
-                startActivity(intent)
-                finish() // Menutup Splash Activity agar tidak bisa kembali dengan tombol "Back"
+//                val intent = Intent(this, AnimActivity::class.java)
+//                startActivity(intent)
+
+                val animIn = R.anim.slide_in_up
+                val animOut = R.anim.slide_out_down
+                val arah = Intent(this, AnimActivity::class.java)
+                startActivity(arah)
+                finish()
+                overridePendingTransition(animIn, animOut)
+
+
+
             }, SPLASH_DELAY)
         }, 500)
 
+    }
+    private fun pindahActivity() {
+//        val animIn = when (direksi) {
+//            "register" -> R.anim.slide_in_up
+//            "beranda" -> R.anim.slide_in_down
+//            else -> R.anim.slide_in_left // Nilai default jika arah tidak valid
+//        }
+//        val animOut = when (direksi) {
+//            "register" -> R.anim.slide_out_down
+//            "beranda" -> R.anim.slide_out_up
+//            else -> R.anim.slide_out_right // Nilai default jika arah tidak valid
+//        }
+//        val intent = when (direksi) {
+//            "register" -> Intent(this, RegisterActivity::class.java)
+//            "beranda" -> Intent(this, AnimActivity::class.java)
+//            else -> Intent(this, MainActivity()::class.java) // Activity default jika arah tidak valid
+//        }
+
+        val animIn = R.anim.slide_in_down
+        val animOut = R.anim.slide_out_up
+        Intent(this, AnimActivity::class.java) // Activity default jika arah tidak valid
+        startActivity(intent)
+        finish()
+        overridePendingTransition(animIn, animOut)
     }
 }

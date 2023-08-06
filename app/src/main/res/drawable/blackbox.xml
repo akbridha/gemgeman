@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#65000000" /> <!-- Ganti dengan kode warna biru yang Anda inginkan -->
+    <corners android:radius="10dp" /> <!-- Ganti dengan ukuran radius yang diinginkan -->
+</shape>

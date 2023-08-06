@@ -109,10 +109,18 @@ class LevelDua : AppCompatActivity() , TimerManager.TimerCallback {
         pindahHalaman(ResultActivity::class.java)
     }
     private fun pindahHalaman(tujuan : Class<*>) {
-        val intent = Intent(this@LevelDua, tujuan)
-        intent.putExtra("waktu", totalTimeInMillis)
 
-        startActivity(intent)
+        val animIn = R.anim.slide_in_right
+        val animOut = R.anim.slide_out_left
+
+        val arah = Intent(this, tujuan)
+        arah.putExtra("waktu", totalTimeInMillis)
+        startActivity(arah)
+        finish()
+        overridePendingTransition(animIn, animOut)
+
+
+
     }
     override fun onPause() {
         super.onPause()
